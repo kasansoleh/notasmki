@@ -13,6 +13,7 @@ class PurchaseProof extends Model
         'vendor_name',
         'amount',
         'category',
+        'penyetor',
         'description',
         'receipt_photo',
         'item_photo',

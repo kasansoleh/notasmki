@@ -51,12 +51,13 @@ class DatabaseSeeder extends Seeder
                 'vendor_name' => 'Gramedia Matraman',
                 'amount' => 485000,
                 'category' => 'ATK & Perlengkapan Kantor',
+                'penyetor' => 'Budi Santoso (Staf Guru)',
                 'description' => 'Pembelian Kertas HVS PaperOne A4 80gr 5 Rim dan Snowman Whiteboard Marker 1 Lusin untuk operasional meeting room.',
                 'receipt_photo' => 'proofs/receipts/sample_nota1.svg',
                 'item_photo' => 'proofs/items/sample_barang1.svg',
-                'submitted_by' => 'Budi Santoso',
+                'submitted_by' => 'Bendahara Sekolah',
                 'verified_by' => null,
-                'finance_by' => 'Hendro Wijaya',
+                'finance_by' => 'Kajur TPm',
                 'status' => 'verified',
             ]
         );
@@ -68,13 +69,14 @@ class DatabaseSeeder extends Seeder
                 'transaction_date' => '2026-11-10',
                 'vendor_name' => 'Toko Sparepart Jaya Motor',
                 'amount' => 1250000,
-                'category' => 'Peralatan & Hardware',
+                'category' => 'Sparepart & Hardware Mesin',
+                'penyetor' => 'Agus Priyono (Teknisi Bengkel)',
                 'description' => 'Penggantian Aki Heavy Duty GS MF 12V dan 1 set kabel peremajaan kendaraan operasional kantor.',
                 'receipt_photo' => 'proofs/receipts/sample_nota2.svg',
                 'item_photo' => 'proofs/items/sample_barang2.svg',
-                'submitted_by' => 'Agus Priyono (Driver)',
+                'submitted_by' => 'Bendahara Sekolah',
                 'verified_by' => null,
-                'finance_by' => 'Hendro Wijaya',
+                'finance_by' => 'Kajur TPm',
                 'status' => 'verified',
             ]
         );

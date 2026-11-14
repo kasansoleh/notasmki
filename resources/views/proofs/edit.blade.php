@@ -40,13 +40,19 @@
                 </div>
             </div>
 
-            <div>
-                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Kategori Pengeluaran *</label>
-                <select name="category" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2 text-sm text-slate-100 focus:border-blue-500 focus:outline-none">
-                    @foreach($categories as $cat)
-                        <option value="{{ $cat }}" {{ old('category', $proof->category) == $cat ? 'selected' : '' }}>{{ $cat }}</option>
-                    @endforeach
-                </select>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Kategori Pengeluaran *</label>
+                    <select name="category" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2 text-sm text-slate-100 focus:border-blue-500 focus:outline-none">
+                        @foreach($categories as $cat)
+                            <option value="{{ $cat }}" {{ old('category', $proof->category) == $cat ? 'selected' : '' }}>{{ $cat }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Nama Penyetor</label>
+                    <input type="text" name="penyetor" value="{{ old('penyetor', $proof->penyetor) }}" placeholder="Contoh: Pak Budi / Teknisi Bengkel" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2 text-sm text-slate-100 focus:border-blue-500 focus:outline-none">
+                </div>
             </div>
 
             <div>

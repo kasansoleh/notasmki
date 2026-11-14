@@ -42,13 +42,19 @@
                     </div>
                 </div>
 
-                <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Kategori Pengeluaran *</label>
-                    <select name="category" id="formCategory" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2 text-sm text-slate-100 focus:border-blue-500 focus:outline-none" onchange="syncPreview()">
-                        @foreach($categories as $cat)
-                            <option value="{{ $cat }}" {{ old('category') == $cat ? 'selected' : '' }}>{{ $cat }}</option>
-                        @endforeach
-                    </select>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Kategori Pengeluaran *</label>
+                        <select name="category" id="formCategory" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2 text-sm text-slate-100 focus:border-blue-500 focus:outline-none" onchange="syncPreview()">
+                            @foreach($categories as $cat)
+                                <option value="{{ $cat }}" {{ old('category') == $cat ? 'selected' : '' }}>{{ $cat }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Nama Penyetor</label>
+                        <input type="text" name="penyetor" id="formPenyetor" value="{{ old('penyetor') }}" placeholder="Contoh: Pak Budi / Teknisi Bengkel" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2 text-sm text-slate-100 focus:border-blue-500 focus:outline-none" oninput="syncPreview()">
+                    </div>
                 </div>
 
                 <div>
@@ -125,7 +131,7 @@
                     </div>
 
                     <!-- Meta Table -->
-                    <div class="grid grid-cols-4 gap-2 bg-slate-100 p-2 rounded text-[11px] mb-2 border border-slate-300">
+                    <div class="grid grid-cols-5 gap-2 bg-slate-100 p-2 rounded text-[11px] mb-2 border border-slate-300">
                         <div>
                             <span class="block text-[9px] uppercase font-bold text-slate-500">TANGGAL</span>
                             <span class="font-bold text-slate-900" id="pvDate">{{ date('d/m/Y') }}</span>
@@ -137,6 +143,10 @@
                         <div>
                             <span class="block text-[9px] uppercase font-bold text-slate-500">KATEGORI</span>
                             <span class="font-bold text-slate-900 truncate block" id="pvCategory">ATK & Perlengkapan</span>
+                        </div>
+                        <div>
+                            <span class="block text-[9px] uppercase font-bold text-slate-500">PENYETOR</span>
+                            <span class="font-bold text-slate-900 truncate block" id="pvPenyetor">-</span>
                         </div>
                         <div>
                             <span class="block text-[9px] uppercase font-bold text-slate-500">NOMINAL</span>
@@ -233,6 +243,8 @@
         document.getElementById('pvAmount').innerText = 'Rp ' + Number(amt).toLocaleString('id-ID');
         
         document.getElementById('pvCategory').innerText = document.getElementById('formCategory').value;
+        const penyetorInput = document.getElementById('formPenyetor');
+        document.getElementById('pvPenyetor').innerText = (penyetorInput && penyetorInput.value) ? penyetorInput.value : '-';
         document.getElementById('pvDesc').innerText = document.getElementById('formDesc').value || '-';
         document.getElementById('pvSubmitter').innerText = document.getElementById('formSubmitter').value || '-';
         document.getElementById('pvFinance').innerText = document.getElementById('formFinance').value || '-';

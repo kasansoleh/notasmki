@@ -49,7 +49,7 @@
                 </div>
 
                 <!-- Meta Table -->
-                <div class="grid grid-cols-4 gap-3 bg-slate-100 p-2.5 rounded text-xs mb-3 border border-slate-300">
+                <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 bg-slate-100 p-2.5 rounded text-xs mb-3 border border-slate-300">
                     <div>
                         <span class="block text-[9px] uppercase font-bold text-slate-500">TANGGAL</span>
                         <span class="font-bold text-slate-900">{{ $proof->transaction_date->format('d/m/Y') }}</span>
@@ -61,6 +61,10 @@
                     <div>
                         <span class="block text-[9px] uppercase font-bold text-slate-500">KATEGORI</span>
                         <span class="font-bold text-slate-900 truncate block">{{ $proof->category }}</span>
+                    </div>
+                    <div>
+                        <span class="block text-[9px] uppercase font-bold text-slate-500">PENYETOR</span>
+                        <span class="font-bold text-slate-900 truncate block">{{ $proof->penyetor ?? '-' }}</span>
                     </div>
                     <div>
                         <span class="block text-[9px] uppercase font-bold text-slate-500">NOMINAL</span>

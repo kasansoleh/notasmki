@@ -74,6 +74,7 @@ class PurchaseProofController extends Controller
             'vendor_name' => 'required|string|max:255',
             'amount' => 'required|numeric|min:0',
             'category' => 'required|string|max:100',
+            'penyetor' => 'nullable|string|max:100',
             'description' => 'nullable|string',
             'submitted_by' => 'nullable|string|max:100',
             'verified_by' => 'nullable|string|max:100',
@@ -134,6 +135,7 @@ class PurchaseProofController extends Controller
             'vendor_name' => 'required|string|max:255',
             'amount' => 'required|numeric|min:0',
             'category' => 'required|string|max:100',
+            'penyetor' => 'nullable|string|max:100',
             'description' => 'nullable|string',
             'submitted_by' => 'nullable|string|max:100',
             'verified_by' => 'nullable|string|max:100',
@@ -219,7 +221,7 @@ class PurchaseProofController extends Controller
             $output = fopen('php://output', 'w');
             fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF)); // BOM for Excel UTF-8
             
-            fputcsv($output, ['No. Bukti', 'Tanggal', 'Vendor/Toko', 'Kategori', 'Nominal (Rp)', 'Keterangan', 'Diajukan Oleh', 'Diverifikasi Oleh', 'Status']);
+            fputcsv($output, ['No. Bukti', 'Tanggal', 'Vendor/Toko', 'Kategori', 'Penyetor', 'Nominal (Rp)', 'Keterangan', 'Bendahara SMKS ISLAM 1 KOTA BLITAR', 'Kajur TPm', 'Status']);
 
             foreach ($proofs as $p) {
                 fputcsv($output, [
@@ -227,10 +229,11 @@ class PurchaseProofController extends Controller
                     $p->transaction_date->format('d/m/Y'),
                     $p->vendor_name,
                     $p->category,
+                    $p->penyetor,
                     $p->amount,
                     $p->description,
                     $p->submitted_by,
-                    $p->verified_by,
+                    $p->finance_by,
                     $p->status,
                 ]);
             }

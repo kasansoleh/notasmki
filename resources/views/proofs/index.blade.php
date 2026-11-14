@@ -90,7 +90,9 @@
                             </td>
                             <td class="py-3.5 px-4">
                                 <div class="font-semibold text-white">{{ $proof->vendor_name }}</div>
-                                <span class="text-xs text-slate-400">Oleh: {{ $proof->submitted_by ?? 'Staf' }}</span>
+                                @if($proof->penyetor)
+                                    <span class="text-xs text-amber-400/90 font-medium block">Penyetor: {{ $proof->penyetor }}</span>
+                                @endif
                             </td>
                             <td class="py-3.5 px-4 max-w-xs">
                                 <span class="inline-block px-2 py-0.5 rounded text-[11px] font-medium bg-blue-900/50 text-blue-300 border border-blue-800 mb-1">

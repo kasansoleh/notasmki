@@ -288,6 +288,10 @@
                     <span class="meta-content">{{ $proof->category }}</span>
                 </div>
                 <div class="meta-col">
+                    <span class="meta-title">Penyetor</span>
+                    <span class="meta-content">{{ $proof->penyetor ?? '-' }}</span>
+                </div>
+                <div class="meta-col">
                     <span class="meta-title">Nominal Total</span>
                     <span class="meta-content meta-amount">{{ $proof->formatted_amount }}</span>
                 </div>

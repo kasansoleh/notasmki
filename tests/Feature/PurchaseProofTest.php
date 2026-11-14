@@ -49,6 +49,7 @@ class PurchaseProofTest extends TestCase
             'vendor_name' => 'CV Sumber Teknik Blitar',
             'amount' => 750000,
             'category' => 'Peralatan & Hardware',
+            'penyetor' => 'Budi Santoso (Guru Praktik TPm)',
             'description' => 'Sparepart mesin bubut bengkel TPm',
             'submitted_by' => 'Bendahara SMKS Islam 1',
             'finance_by' => 'Kajur TPm',
@@ -61,6 +62,7 @@ class PurchaseProofTest extends TestCase
         $this->assertDatabaseHas('purchase_proofs', [
             'proof_number' => 'TRX-202611-0099',
             'vendor_name' => 'CV Sumber Teknik Blitar',
+            'penyetor' => 'Budi Santoso (Guru Praktik TPm)',
         ]);
 
         $proof = PurchaseProof::where('proof_number', 'TRX-202611-0099')->first();
@@ -78,6 +80,7 @@ class PurchaseProofTest extends TestCase
             'vendor_name' => 'Toko Besi Sentosa',
             'amount' => 300000,
             'category' => 'Peralatan & Hardware',
+            'penyetor' => 'Agus Priyono',
             'submitted_by' => 'Hj. Siti (Bendahara)',
             'finance_by' => 'Bpk. Ahmad (Kajur TPm)',
         ]);
@@ -86,11 +89,19 @@ class PurchaseProofTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('TRX-202611-0002');
         $response->assertSee('Toko Besi Sentosa');
+        $response->assertSee('Penyetor');
+        $response->assertSee('Agus Priyono');
         $response->assertSee('BAGIAN 1: FOTO NOTA');
         $response->assertSee('BAGIAN 2: FOTO FISIK BARANG');
         $response->assertSee('Bendahara SMKS ISLAM 1 KOTA BLITAR');
         $response->assertSee('Kajur TPm');
         $response->assertDontSee('Pemeriksa / Verifikator');
+
+        // Test view show juga menampilkan PENYETOR
+        $showResponse = $this->get(route('proofs.show', $proof));
+        $showResponse->assertStatus(200);
+        $showResponse->assertSee('PENYETOR');
+        $showResponse->assertSee('Agus Priyono');
     }
 
     public function test_can_export_csv(): void

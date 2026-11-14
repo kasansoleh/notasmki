@@ -282,6 +282,10 @@
                         <span class="meta-content">{{ $proof->category }}</span>
                     </div>
                     <div class="meta-col">
+                        <span class="meta-title">Penyetor</span>
+                        <span class="meta-content">{{ $proof->penyetor ?? '-' }}</span>
+                    </div>
+                    <div class="meta-col">
                         <span class="meta-title">Nominal Total</span>
                         <span class="meta-content meta-amount">{{ $proof->formatted_amount }}</span>
                     </div>
@@ -324,15 +328,11 @@
 
                 <div class="signatures">
                     <div>
-                        <div class="sig-role">Yang Mengajukan / Pembeli,</div>
+                        <div class="sig-role">Bendahara SMKS ISLAM 1 KOTA BLITAR,</div>
                         <div class="sig-name">{{ $proof->submitted_by ?? $settings->default_submitted_by }}</div>
                     </div>
                     <div>
-                        <div class="sig-role">Pemeriksa / Verifikator,</div>
-                        <div class="sig-name">{{ $proof->verified_by ?? $settings->default_verified_by }}</div>
-                    </div>
-                    <div>
-                        <div class="sig-role">Finance & Kasir,</div>
+                        <div class="sig-role">Kajur TPm,</div>
                         <div class="sig-name">{{ $proof->finance_by ?? $settings->default_finance_by }}</div>
                     </div>
                 </div>
