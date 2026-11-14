@@ -87,12 +87,12 @@
             <!-- Penandatangan -->
             <div class="grid grid-cols-2 gap-4 pt-2 border-t border-slate-700">
                 <div>
-                    <label class="block text-[11px] font-semibold text-slate-400 mb-1">Diajukan Oleh</label>
+                    <label class="block text-[11px] font-semibold text-slate-400 mb-1">Bendahara SMKS ISLAM 1 KOTA BLITAR</label>
                     <input type="text" name="submitted_by" value="{{ old('submitted_by', $proof->submitted_by) }}" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200">
                 </div>
                 <div>
-                    <label class="block text-[11px] font-semibold text-slate-400 mb-1">Diverifikasi Oleh</label>
-                    <input type="text" name="verified_by" value="{{ old('verified_by', $proof->verified_by) }}" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200">
+                    <label class="block text-[11px] font-semibold text-slate-400 mb-1">Kajur TPm</label>
+                    <input type="text" name="finance_by" value="{{ old('finance_by', $proof->finance_by) }}" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200">
                 </div>
             </div>
 

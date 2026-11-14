@@ -17,13 +17,13 @@ class DatabaseSeeder extends Seeder
         CompanySetting::updateOrCreate(
             ['id' => 1],
             [
-                'company_name' => 'PT NUSANTARA TECH UTAMA',
+                'company_name' => 'SMKS ISLAM 1 KOTA BLITAR',
                 'doc_title' => 'LAMPIRAN BUKTI PEMBELIAN & NOTA',
-                'company_address' => 'Gedung Cyber 2 Lantai 15, Jl. H.R. Rasuna Said Kav. X-5 No. 13, Jakarta Selatan',
+                'company_address' => 'Jl. Musi No. 4, Kota Blitar, Jawa Timur - Telp: (0342) 801642',
                 'company_phone' => '(021) 555-0199 / info@nusantaratech.co.id',
-                'default_submitted_by' => 'Budi Santoso (Admin Operasional)',
-                'default_verified_by' => 'Siti Rahma (Finance Manager)',
-                'default_finance_by' => 'Hendro Wijaya (Kasir Utama)',
+                'default_submitted_by' => 'Bendahara Sekolah',
+                'default_verified_by' => null,
+                'default_finance_by' => 'Kajur TPm',
             ]
         );
 
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
                 'receipt_photo' => 'proofs/receipts/sample_nota1.svg',
                 'item_photo' => 'proofs/items/sample_barang1.svg',
                 'submitted_by' => 'Budi Santoso',
-                'verified_by' => 'Siti Rahma',
+                'verified_by' => null,
                 'finance_by' => 'Hendro Wijaya',
                 'status' => 'verified',
             ]
@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
                 'receipt_photo' => 'proofs/receipts/sample_nota2.svg',
                 'item_photo' => 'proofs/items/sample_barang2.svg',
                 'submitted_by' => 'Agus Priyono (Driver)',
-                'verified_by' => 'Siti Rahma',
+                'verified_by' => null,
                 'finance_by' => 'Hendro Wijaya',
                 'status' => 'verified',
             ]

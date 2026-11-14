@@ -109,17 +109,13 @@
                 </div>
 
                 <!-- Tanda Tangan -->
-                <div class="grid grid-cols-3 gap-4 text-center text-xs pt-1 border-t border-slate-300">
+                <div class="grid grid-cols-2 gap-12 max-w-lg mx-auto text-center text-xs pt-1 border-t border-slate-300">
                     <div>
-                        <div class="text-slate-500 font-semibold mb-8">Yang Mengajukan / Pembeli,</div>
+                        <div class="text-slate-500 font-semibold mb-8">Bendahara SMKS ISLAM 1 KOTA BLITAR,</div>
                         <div class="font-bold border-b border-slate-900 pb-0.5">{{ $proof->submitted_by ?? $settings->default_submitted_by }}</div>
                     </div>
                     <div>
-                        <div class="text-slate-500 font-semibold mb-8">Pemeriksa / Verifikator,</div>
-                        <div class="font-bold border-b border-slate-900 pb-0.5">{{ $proof->verified_by ?? $settings->default_verified_by }}</div>
-                    </div>
-                    <div>
-                        <div class="text-slate-500 font-semibold mb-8">Finance & Kasir,</div>
+                        <div class="text-slate-500 font-semibold mb-8">Kajur TPm,</div>
                         <div class="font-bold border-b border-slate-900 pb-0.5">{{ $proof->finance_by ?? $settings->default_finance_by }}</div>
                     </div>
                 </div>

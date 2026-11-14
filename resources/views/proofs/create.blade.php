@@ -77,12 +77,12 @@
                 <!-- Penandatangan -->
                 <div class="grid grid-cols-2 gap-4 pt-2 border-t border-slate-700">
                     <div>
-                        <label class="block text-[11px] font-semibold text-slate-400 mb-1">Diajukan Oleh</label>
+                        <label class="block text-[11px] font-semibold text-slate-400 mb-1">Bendahara SMKS ISLAM 1 KOTA BLITAR</label>
                         <input type="text" name="submitted_by" id="formSubmitter" value="{{ old('submitted_by', $settings->default_submitted_by) }}" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200" oninput="syncPreview()">
                     </div>
                     <div>
-                        <label class="block text-[11px] font-semibold text-slate-400 mb-1">Diverifikasi Oleh</label>
-                        <input type="text" name="verified_by" id="formVerifier" value="{{ old('verified_by', $settings->default_verified_by) }}" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200" oninput="syncPreview()">
+                        <label class="block text-[11px] font-semibold text-slate-400 mb-1">Kajur TPm</label>
+                        <input type="text" name="finance_by" id="formFinance" value="{{ old('finance_by', $settings->default_finance_by) }}" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200" oninput="syncPreview()">
                     </div>
                 </div>
 
@@ -181,18 +181,14 @@
                     </div>
 
                     <!-- Tanda Tangan -->
-                    <div class="grid grid-cols-3 gap-4 text-center text-[10px] pt-1 border-t border-slate-300">
+                    <div class="grid grid-cols-2 gap-8 max-w-md mx-auto text-center text-[10px] pt-1 border-t border-slate-300">
                         <div>
-                            <div class="text-slate-500 font-semibold mb-6">Yang Mengajukan,</div>
+                            <div class="text-slate-500 font-semibold mb-6">Bendahara SMKS ISLAM 1 KOTA BLITAR,</div>
                             <div class="font-bold border-b border-slate-900 pb-0.5" id="pvSubmitter">{{ $settings->default_submitted_by }}</div>
                         </div>
                         <div>
-                            <div class="text-slate-500 font-semibold mb-6">Diverifikasi Oleh,</div>
-                            <div class="font-bold border-b border-slate-900 pb-0.5" id="pvVerifier">{{ $settings->default_verified_by }}</div>
-                        </div>
-                        <div>
-                            <div class="text-slate-500 font-semibold mb-6">Finance / Kasir,</div>
-                            <div class="font-bold border-b border-slate-900 pb-0.5">( &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )</div>
+                            <div class="text-slate-500 font-semibold mb-6">Kajur TPm,</div>
+                            <div class="font-bold border-b border-slate-900 pb-0.5" id="pvFinance">{{ $settings->default_finance_by }}</div>
                         </div>
                     </div>
                 </div>
@@ -239,7 +235,7 @@
         document.getElementById('pvCategory').innerText = document.getElementById('formCategory').value;
         document.getElementById('pvDesc').innerText = document.getElementById('formDesc').value || '-';
         document.getElementById('pvSubmitter').innerText = document.getElementById('formSubmitter').value || '-';
-        document.getElementById('pvVerifier').innerText = document.getElementById('formVerifier').value || '-';
+        document.getElementById('pvFinance').innerText = document.getElementById('formFinance').value || '-';
     }
 
     syncPreview();

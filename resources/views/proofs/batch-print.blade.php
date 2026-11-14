@@ -193,7 +193,7 @@
 
         .signatures {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr 1fr; max-width: 450px; margin-left: auto; margin-right: auto;
             gap: 8px;
             margin-top: 4px;
             padding-top: 4px;

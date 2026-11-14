@@ -24,16 +24,16 @@ class PurchaseProofTest extends TestCase
         PurchaseProof::create([
             'proof_number' => 'TRX-202611-0001',
             'transaction_date' => '2026-11-12',
-            'vendor_name' => 'Gramedia Matraman',
+            'vendor_name' => 'Toko Alat Teknik Maju',
             'amount' => 485000,
-            'category' => 'ATK & Perlengkapan Kantor',
-            'description' => 'Beli kertas HVS dan spidol',
+            'category' => 'Peralatan & Hardware',
+            'description' => 'Pembelian mata pahat bubut dan coolant mesin CNC',
         ]);
 
         $response = $this->get(route('proofs.index'));
         $response->assertStatus(200);
         $response->assertSee('TRX-202611-0001');
-        $response->assertSee('Gramedia Matraman');
+        $response->assertSee('Toko Alat Teknik Maju');
     }
 
     public function test_can_create_new_purchase_proof_with_photos(): void
@@ -46,13 +46,12 @@ class PurchaseProofTest extends TestCase
         $payload = [
             'proof_number' => 'TRX-202611-0099',
             'transaction_date' => '2026-11-12',
-            'vendor_name' => 'Toko Komputer Prima',
+            'vendor_name' => 'CV Sumber Teknik Blitar',
             'amount' => 750000,
             'category' => 'Peralatan & Hardware',
-            'description' => 'Keyboard mekanik dan mouse wireless kantor',
-            'submitted_by' => 'Staff IT',
-            'verified_by' => 'Manager IT',
-            'finance_by' => 'Finance Dept',
+            'description' => 'Sparepart mesin bubut bengkel TPm',
+            'submitted_by' => 'Bendahara SMKS Islam 1',
+            'finance_by' => 'Kajur TPm',
             'receipt_photo' => $receipt,
             'item_photo' => $item,
         ];
@@ -61,7 +60,7 @@ class PurchaseProofTest extends TestCase
 
         $this->assertDatabaseHas('purchase_proofs', [
             'proof_number' => 'TRX-202611-0099',
-            'vendor_name' => 'Toko Komputer Prima',
+            'vendor_name' => 'CV Sumber Teknik Blitar',
         ]);
 
         $proof = PurchaseProof::where('proof_number', 'TRX-202611-0099')->first();
@@ -76,17 +75,22 @@ class PurchaseProofTest extends TestCase
         $proof = PurchaseProof::create([
             'proof_number' => 'TRX-202611-0002',
             'transaction_date' => '2026-11-10',
-            'vendor_name' => 'SPBU Pertamina',
+            'vendor_name' => 'Toko Besi Sentosa',
             'amount' => 300000,
-            'category' => 'Biaya Operasional & Bensin',
+            'category' => 'Peralatan & Hardware',
+            'submitted_by' => 'Hj. Siti (Bendahara)',
+            'finance_by' => 'Bpk. Ahmad (Kajur TPm)',
         ]);
 
         $response = $this->get(route('proofs.print', $proof));
         $response->assertStatus(200);
         $response->assertSee('TRX-202611-0002');
-        $response->assertSee('SPBU Pertamina');
+        $response->assertSee('Toko Besi Sentosa');
         $response->assertSee('BAGIAN 1: FOTO NOTA');
         $response->assertSee('BAGIAN 2: FOTO FISIK BARANG');
+        $response->assertSee('Bendahara SMKS ISLAM 1 KOTA BLITAR');
+        $response->assertSee('Kajur TPm');
+        $response->assertDontSee('Pemeriksa / Verifikator');
     }
 
     public function test_can_export_csv(): void
@@ -94,9 +98,9 @@ class PurchaseProofTest extends TestCase
         PurchaseProof::create([
             'proof_number' => 'TRX-202611-0003',
             'transaction_date' => '2026-11-09',
-            'vendor_name' => 'Restoran Sederhana',
+            'vendor_name' => 'Gramedia Matraman',
             'amount' => 250000,
-            'category' => 'Jamuan & Konsumsi Client',
+            'category' => 'ATK & Perlengkapan Kantor',
         ]);
 
         $response = $this->get(route('proofs.export.csv'));
@@ -107,20 +111,19 @@ class PurchaseProofTest extends TestCase
     public function test_can_update_company_settings(): void
     {
         $payload = [
-            'company_name' => 'PT KREATIF JAYA MANDIRI',
-            'doc_title' => 'BUKTI REIMBURSEMENT BIAYA',
-            'company_address' => 'Jl. Sudirman Kav 20, Jakarta',
-            'company_phone' => '021-998877',
-            'default_submitted_by' => 'User Staff',
-            'default_verified_by' => 'Lead Team',
-            'default_finance_by' => 'Finance Lead',
+            'company_name' => 'SMKS ISLAM 1 KOTA BLITAR',
+            'doc_title' => 'LAMPIRAN BUKTI PEMBELIAN TPm',
+            'company_address' => 'Jl. Musi No. 4 Blitar',
+            'company_phone' => '0342-801642',
+            'default_submitted_by' => 'Bendahara Sekolah',
+            'default_finance_by' => 'Kajur TPm',
         ];
 
         $response = $this->put(route('settings.update'), $payload);
         $response->assertRedirect(route('settings.index'));
 
         $this->assertDatabaseHas('company_settings', [
-            'company_name' => 'PT KREATIF JAYA MANDIRI',
+            'company_name' => 'SMKS ISLAM 1 KOTA BLITAR',
         ]);
     }
 }

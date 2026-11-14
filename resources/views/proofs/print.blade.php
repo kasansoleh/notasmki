@@ -198,7 +198,7 @@
 
         .signatures {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr 1fr; max-width: 450px; margin-left: auto; margin-right: auto;
             gap: 8px;
             margin-top: 4px;
             padding-top: 4px;
@@ -330,15 +330,11 @@
 
             <div class="signatures">
                 <div>
-                    <div class="sig-role">Yang Mengajukan / Pembeli,</div>
+                    <div class="sig-role">Bendahara SMKS ISLAM 1 KOTA BLITAR,</div>
                     <div class="sig-name">{{ $proof->submitted_by ?? $settings->default_submitted_by }}</div>
                 </div>
                 <div>
-                    <div class="sig-role">Pemeriksa / Verifikator,</div>
-                    <div class="sig-name">{{ $proof->verified_by ?? $settings->default_verified_by }}</div>
-                </div>
-                <div>
-                    <div class="sig-role">Finance & Kasir,</div>
+                    <div class="sig-role">Kajur TPm,</div>
                     <div class="sig-name">{{ $proof->finance_by ?? $settings->default_finance_by }}</div>
                 </div>
             </div>

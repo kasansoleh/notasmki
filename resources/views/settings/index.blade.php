@@ -34,18 +34,14 @@
             </div>
 
             <div class="pt-4 border-t border-slate-700 space-y-4">
-                <h3 class="text-sm font-bold text-slate-200">Default Penandatangan di Lembar A4</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <h3 class="text-sm font-bold text-slate-200">Default Penandatangan di Lembar A4 (2 Kolom)</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-[11px] font-semibold text-slate-400 mb-1">Yang Mengajukan (Kiri)</label>
+                        <label class="block text-[11px] font-semibold text-slate-400 mb-1">Bendahara SMKS ISLAM 1 KOTA BLITAR (Kiri)</label>
                         <input type="text" name="default_submitted_by" value="{{ old('default_submitted_by', $settings->default_submitted_by) }}" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200">
                     </div>
                     <div>
-                        <label class="block text-[11px] font-semibold text-slate-400 mb-1">Verifikator (Tengah)</label>
-                        <input type="text" name="default_verified_by" value="{{ old('default_verified_by', $settings->default_verified_by) }}" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] font-semibold text-slate-400 mb-1">Finance & Kasir (Kanan)</label>
+                        <label class="block text-[11px] font-semibold text-slate-400 mb-1">Kajur TPm (Kanan)</label>
                         <input type="text" name="default_finance_by" value="{{ old('default_finance_by', $settings->default_finance_by) }}" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200">
                     </div>
                 </div>
