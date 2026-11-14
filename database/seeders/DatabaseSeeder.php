@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\CompanySetting;
 use App\Models\PurchaseProof;
+use App\Models\Category;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,7 +14,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Inisialisasi Pengaturan Perusahaan & Format Dokumen A4
+        // 1. Kategori Pengeluaran
+        $defaultCategories = [
+            ['name' => 'Bahan Praktik Siswa TPm', 'code' => 'PRAKTIK-TPM', 'description' => 'Besi silinder, plat, pahat bubut, insert milling, coolant, dan amplas'],
+            ['name' => 'Sparepart & Hardware Mesin', 'code' => 'SPAREPART', 'description' => 'Komponen mesin bubut, milling, bor frais, belt, aki dan bearing'],
+            ['name' => 'ATK & Perlengkapan Kantor', 'code' => 'ATK', 'description' => 'Kertas, map, spidol whiteboard, tinta printer, dan ordner'],
+            ['name' => 'Biaya Operasional & Bensin', 'code' => 'OPERASIONAL', 'description' => 'BBM kendaraan jemput/antar, transportasi dinas ke industri'],
+            ['name' => 'Pemeliharaan & Servis', 'code' => 'MAINTENANCE', 'description' => 'Perawatan rutin berkala mesin perkakas dan kelistrikan'],
+            ['name' => 'Konsumsi Tamu & Kegiatan', 'code' => 'KONSUMSI', 'description' => 'Konsumsi uji kompetensi kejuruan dan kunjungan industri'],
+            ['name' => 'Lain-lain', 'code' => 'LAINNYA', 'description' => 'Pengeluaran darurat atau belanja umum lainnya'],
+        ];
+
+        foreach ($defaultCategories as $cat) {
+            Category::updateOrCreate(['name' => $cat['name']], $cat);
+        }
+
+        // 2. Inisialisasi Pengaturan Perusahaan & Format Dokumen A4
         CompanySetting::updateOrCreate(
             ['id' => 1],
             [

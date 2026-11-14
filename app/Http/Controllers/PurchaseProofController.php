@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PurchaseProof;
 use App\Models\CompanySetting;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -44,14 +45,7 @@ class PurchaseProofController extends Controller
                                         ->whereYear('transaction_date', now()->year)
                                         ->sum('amount');
 
-        $categories = [
-            'ATK & Perlengkapan Kantor',
-            'Peralatan & Hardware',
-            'Biaya Operasional & Bensin',
-            'Jamuan & Konsumsi Client',
-            'Pemeliharaan & Servis',
-            'Lain-lain',
-        ];
+        $categories = $this->getCategoryList();
 
         return view('proofs.index', compact(
             'proofs',
@@ -67,14 +61,7 @@ class PurchaseProofController extends Controller
     {
         $settings = CompanySetting::getSettings();
         $nextProofNumber = PurchaseProof::generateNextProofNumber();
-        $categories = [
-            'ATK & Perlengkapan Kantor',
-            'Peralatan & Hardware',
-            'Biaya Operasional & Bensin',
-            'Jamuan & Konsumsi Client',
-            'Pemeliharaan & Servis',
-            'Lain-lain',
-        ];
+        $categories = $this->getCategoryList();
 
         return view('proofs.create', compact('settings', 'nextProofNumber', 'categories'));
     }
@@ -118,16 +105,25 @@ class PurchaseProofController extends Controller
     public function edit(PurchaseProof $proof)
     {
         $settings = CompanySetting::getSettings();
-        $categories = [
-            'ATK & Perlengkapan Kantor',
-            'Peralatan & Hardware',
-            'Biaya Operasional & Bensin',
-            'Jamuan & Konsumsi Client',
-            'Pemeliharaan & Servis',
-            'Lain-lain',
-        ];
+        $categories = $this->getCategoryList();
 
         return view('proofs.edit', compact('proof', 'settings', 'categories'));
+    }
+
+    private function getCategoryList(): array
+    {
+        $cats = Category::orderBy('name')->pluck('name')->toArray();
+        if (empty($cats)) {
+            return [
+                'Bahan & Alat Praktik TPm',
+                'Sparepart & Hardware Mesin',
+                'ATK & Perlengkapan Kantor',
+                'Biaya Operasional & Bensin',
+                'Pemeliharaan & Servis',
+                'Lain-lain',
+            ];
+        }
+        return $cats;
     }
 
     public function update(Request $request, PurchaseProof $proof)

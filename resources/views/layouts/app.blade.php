@@ -63,6 +63,9 @@
                         <a href="{{ route('proofs.create') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('proofs.create') ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-700/50' }} transition">
                             ➕ Input Bukti Baru
                         </a>
+                        <a href="{{ route('categories.index') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('categories.*') ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-700/50' }} transition">
+                            🏷️ Kategori
+                        </a>
                         <a href="{{ route('settings.index') }}" class="px-3 py-2 rounded-lg text-sm font-semibold {{ request()->routeIs('settings.index') ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30' : 'text-slate-300 hover:text-white hover:bg-slate-700/50' }} transition">
                             ⚙️ Pengaturan Kop A4
                         </a>
@@ -89,6 +92,16 @@
                 <div class="flex items-center gap-3">
                     <span class="text-xl">✅</span>
                     <span class="text-sm font-medium">{{ session('success') }}</span>
+                </div>
+                <button onclick="this.parentElement.remove()" class="text-slate-400 hover:text-white text-lg">&times;</button>
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div class="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 flex items-center justify-between shadow-sm">
+                <div class="flex items-center gap-3">
+                    <span class="text-xl">⚠️</span>
+                    <span class="text-sm font-medium">{{ session('error') }}</span>
                 </div>
                 <button onclick="this.parentElement.remove()" class="text-slate-400 hover:text-white text-lg">&times;</button>
             </div>

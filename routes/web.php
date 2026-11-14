@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PurchaseProofController;
 use App\Http\Controllers\CompanySettingController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,6 +22,9 @@ Route::prefix('proofs')->name('proofs.')->group(function () {
     Route::delete('/{proof}', [PurchaseProofController::class, 'destroy'])->name('destroy');
     Route::get('/{proof}/print', [PurchaseProofController::class, 'print'])->name('print');
 });
+
+// Kelola Kategori Pengeluaran
+Route::resource('categories', CategoryController::class)->except(['create', 'show', 'edit']);
 
 // Setting Perusahaan & Kop Surat A4
 Route::get('/settings', [CompanySettingController::class, 'index'])->name('settings.index');
